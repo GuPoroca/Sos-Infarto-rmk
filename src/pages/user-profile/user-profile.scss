@@ -1,0 +1,62 @@
+page-user-profile {
+  .arredondar {
+    border-radius: 40px;
+  }
+  .boxbotao {
+    border-radius: 40px;
+    background-color: #5ea6e3;
+  }
+  .nada {
+    border-radius: 50px;
+  }
+  .nome {
+    content: url(../../assets/icon/icone_nome.png);
+    border-radius: 40px;
+    width: 20px;
+    height: 20px;
+  }
+  .senha {
+    content: url(../../assets/icon/icone_senha.png);
+    border-radius: 30px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .username {
+    content: url(../../assets/icon/icone_apelido.png);
+    border-radius: 30px;
+    width: 20px;
+    height: 20px;
+  }
+  .imagem {
+    content: url(../../assets/icon/icone_img.png);
+    border-radius: 30px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .inputemail {
+    border-radius: 40px;
+  }
+  .inputsenha {
+    border-radius: 40px;
+  }
+  .inputusername {
+    border-radius: 40px;
+  }
+  .inputnome {
+    border-radius: 40px;
+  }
+  .Logo{
+    content: url(../../assets/icon/icone_img.png);
+  }
+ .text-input::-webkit-input-placeholder {
+    color: white;
+  }
+  .ion-title {
+    position: absolute;
+    top: 0;
+    padding: 0 35px 1px;
+    height: 100%;
+  }
+}

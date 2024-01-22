@@ -1,0 +1,37 @@
+page-signin {
+  /*.auth-icon {
+        font-size: 7.0em;
+    }*/
+  .round {
+    width: 50%;
+    //border-radius: 100%;
+    margin: 25px auto 0 auto;
+  }
+  .email {
+    border-radius: 40px;
+    width: 20px;
+    height: 20px;
+  }
+  .senha {
+    border-radius: 40px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .inputemail {
+    border-radius: 10px;
+    background-color: #5ea6e3;
+
+  }
+  .inputsenha {
+    border-radius: 10px;
+    background-color: #5ea6e3;
+  }
+  .boxbuton{
+    border-radius: 40px;
+  }
+
+  .text-input::-webkit-input-placeholder {
+    color: white;
+  }
+}

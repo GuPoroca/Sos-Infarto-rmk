@@ -1,0 +1,13 @@
+{
+  "name": "S.O.S Infarto",
+  "short_name": "Chat",
+  "start_url": "index.html",
+  "display": "standalone",
+  "icons": [{
+    "src": "assets/images/logo-inicial.jpg",
+    "sizes": "238x238",
+    "type": "image/jpg"
+  }],
+  "background_color": "#009966",
+  "theme_color": "#009966"
+}

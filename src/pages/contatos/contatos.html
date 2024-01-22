@@ -1,0 +1,75 @@
+<ion-header>
+
+    <ion-navbar color="primary">
+        <img [src]="'assets/icon/icone_logo.png'" />
+      <ion-title class="ion-title" color="white">Lista de Contatos</ion-title>
+    </ion-navbar>
+
+  </ion-header>
+
+
+  <ion-content padding>
+
+    <div style=" border-radius: 20px;
+    background-color: rgba(145, 175, 231, 0.74);
+    padding: 10px;
+    margin: 1px;
+    opacity: 0.8;">
+
+    <form *ngFor="let contato of contatos">
+      <ion-item class="inputnome">
+        <img [src]="'assets/icon/icone_nome.png'" item-start style=" border-radius: 30px;
+        width: 36px;
+        height: 36px;" />
+          <ion-label>Nome </ion-label>
+          <ion-input type="text" [(ngModel)]="contato.nome" name="nome"></ion-input>
+        </ion-item>
+        <br>
+        <ion-item class="inputnumero">
+          <img [src]="'assets/icon/icone_fone_bg.png'" item-start style=" border-radius: 30px;
+          width: 36px;
+          height: 36px;" />
+          <!-- <ion-label>Telefone</ion-label>
+            <ion-input type="number" [(ngModel)]="contato.telefone" name="telefone"></ion-input> -->
+            <ion-input
+        label="Telefone"
+        placeholder="(99) 9 9999-9999"
+        type="number"
+        typeLabel="stacked"
+        [(ngModel)]="contato.telefone"
+        name="telefone"
+        ></ion-input>
+      </ion-item>
+
+        <div text-center>
+          <button ion-button icon-start color="secondary" class="boxbotao2" (click)="editContato(contato)">
+            <img [src]="'assets/icon/icone_salvar.png'" item-end style=" border-radius: 30px;
+        width: 20px;
+        height: 20px;" />
+            Salvar
+          </button>
+          <button ion-button icon-start color="primary" class="boxbotao1" (click)="ligar(contato)">
+            <img [src]="'assets/icon/icone_fone_b.png'" item-end style=" border-radius: 30px;
+            width: 20px;
+            height: 20px;" />
+            <p></p>
+            Ligar
+          </button>
+          <button ion-button icon-start color="danger" class="boxbotao" (click)="remove(contato)">
+            <img [src]="'assets/icon/icone_lixeira.png'" item-end style=" border-radius: 30px;
+            width: 20px;
+            height: 20px;" />
+            <p></p>
+            Remover
+          </button>
+        </div>
+
+        <br>
+      </form>
+
+    </div>
+      <button ion-button block (click)="addContato();" [disabled]="contatos.length >= 3" class="inputnumero1">Novo Contato</button>
+
+
+
+  </ion-content>

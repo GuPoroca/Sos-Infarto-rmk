@@ -1,0 +1,140 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+      <img [src]="'assets/icon/icone_logo.png'" />
+    <ion-title class="ion-title" color="white">Histórico Clínico</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="historicoClinicoForm" (ngSubmit)="onSubmit($event)">
+    <ion-item class="arredondar">
+      <ion-label>Sexo</ion-label>
+      <ion-select placeholder="Selecione um gênero" formControlName="sexo" [(ngModel)]="currentUser.sexo">
+        <ion-option value="masculino">Masculino</ion-option>
+        <ion-option value="feminino">Feminino</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="arredondar">
+      <ion-label floating>Peso (Kg)</ion-label>
+      <ion-input type="number" formControlName="peso" [(ngModel)]="currentUser.peso" maxlength="3"></ion-input>
+    </ion-item>
+
+    <ion-item class="arredondar">
+      <ion-label floating>Altura (cm)</ion-label>
+      <ion-input type="number" formControlName="altura" [(ngModel)]="currentUser.altura" (blur)="calculaIMC()"></ion-input>
+    </ion-item>
+
+    <ion-item class="arredondar">
+      <ion-label floating>Idade</ion-label>
+      <ion-input type="number" formControlName="idade" [(ngModel)]="currentUser.idade"></ion-input>
+    </ion-item>
+
+    <ion-item class="arredondar">
+      <ion-label floating>IMC (formula para saber se uma pessoa precisa ganhar ou perder peso)</ion-label>
+      <ion-input type="number" name="imc" [(ngModel)]="imc" [ngModelOptions]="{standalone: true}" [disabled]="true"></ion-input>
+    </ion-item>
+
+    <h6 text-center ion-text color=#000000>{{ resultado }}</h6>
+
+    <!-- <h6 text-center ion-text color="danger">A seguir marque apenas as alternativas em que a resposta seja igual a "SIM"</h6> -->
+
+    <br>
+    <!-- Historico Pessoal -->
+
+    <ion-item class="arredondar">
+      <ion-label style="white-space: normal">Colesterol ou Triglicerídeos alto (Gordura no sangue)</ion-label>
+      <ion-checkbox color="primary" checked="false" name="sn_colesterol" [(ngModel)]="currentUser.sn_colesterol" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+    </ion-item>
+
+    <ion-item style="padding-left: 50px" *ngIf="currentUser.sn_colesterol" class="arredondar">
+      <ion-label style="white-space: normal">Usa medicação ?</ion-label>
+      <ion-checkbox color="primary" checked="false" name="sn_colesterol_medicacao" [(ngModel)]="currentUser.sn_colesterol_medicacao" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+    </ion-item>
+
+    <ion-item class="arredondar">
+      <ion-label style="white-space: normal">Diabetes Mellitus (Açúcar no sangue)</ion-label>
+      <ion-checkbox color="primary" checked="false" name="sn_diabetes" [(ngModel)]="currentUser.sn_diabetes" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+    </ion-item>
+
+    <ion-item style="padding-left: 50px" *ngIf="currentUser.sn_diabetes" class="arredondar">
+      <ion-label style="white-space: normal">Usa medicação ?</ion-label>
+      <ion-checkbox color="primary" checked="false" name="sn_diabetes_medicacao" [(ngModel)]="currentUser.sn_diabetes_medicacao" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+    </ion-item>
+
+    <ion-item class="arredondar">
+      <ion-label style="white-space: normal">Hipertensão arterial (Pressão alta)</ion-label>
+      <ion-checkbox color="primary" checked="false" name="sn_hipertensao" [(ngModel)]="currentUser.sn_hipertensao" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+    </ion-item>
+
+    <ion-item style="padding-left: 50px" *ngIf="currentUser.sn_hipertensao" class="arredondar">
+      <ion-label style="white-space: normal">Usa medicação ?</ion-label>
+      <ion-checkbox color="primary" checked="false" name="sn_hipertensao_medicacao" [(ngModel)]="currentUser.sn_hipertensao_medicacao" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+    </ion-item>
+
+    <ion-item class="arredondar">
+      <ion-label style="white-space: normal">IAM prévio (Já infartou antes?)</ion-label>
+      <ion-checkbox color="primary" checked="false" name="sn_infartou" [(ngModel)]="currentUser.sn_infartou" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+    </ion-item>
+
+    <h6 text-center ion-text color=#000000>Tamanho da Cintura (2 dedos acima do umbigo)</h6>
+
+    <ion-item class="arredondar">
+      <ion-label floating>Circunferência da cintura (cm)</ion-label>
+      <ion-input type="number" name="cintura" [(ngModel)]="currentUser.cintura" [ngModelOptions]="{standalone: true}" (blur)="calculoCinturaQuadril()"></ion-input>
+    </ion-item>
+    
+    <h6 text-center ion-text color=#000000>Tamanho do Quadril (medir na parte mais larga do quadril)</h6>
+    
+    <ion-item class="arredondar">
+      <ion-label floating>Circunferência do quadril (cm)</ion-label>
+      <ion-input type="number" name="quadril" [(ngModel)]="currentUser.quadril" [ngModelOptions]="{standalone: true}" (blur)="calculoCinturaQuadril()"></ion-input>
+    </ion-item>
+    
+    <ion-grid class="arredondar">
+      <ion-row>
+        <ion-col col-6 *ngIf="currentUser.cintura && currentUser.quadril">
+          <ion-item class="arredondar">
+            <ion-label floating>Relação cintura/quadril</ion-label>
+            <ion-input type="number" [disabled]="true" name="calculoRCQCampo" [(ngModel)]="calculoRCQCampo" [ngModelOptions]="{standalone: true}"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col col-6 *ngIf="currentUser.cintura && currentUser.quadril">
+          <ion-item class="arredondar">
+            <ion-label floating>Excesso de peso</ion-label>
+            <ion-input type="text" [disabled]="true" name="resultadoRCQ" [(ngModel)]="resultadoRCQ" [ngModelOptions]="{standalone: true}"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+
+    <ion-item class="arredondar">
+      <ion-label style="white-space: normal">Consome 5 cigarros por dia?</ion-label>
+      <ion-checkbox color="primary" checked="false" name="sn_tabagismo" [(ngModel)]="currentUser.sn_tabagismo" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+    </ion-item>
+
+    <ion-item class="arredondar">
+      <ion-label style="white-space: normal">Realiza atividade física 3 vezes por semana?</ion-label>
+      <ion-checkbox color="primary" checked="false" name="sn_atividade_fisica" [(ngModel)]="currentUser.sn_atividade_fisica" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+    </ion-item>
+
+    <ion-item class="arredondar">
+      <ion-label style="white-space: normal">Consome frutas e vegetais todos os dias?</ion-label>
+      <ion-checkbox color="primary" checked="false" name="sn_frutas" [(ngModel)]="currentUser.sn_frutas" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+    </ion-item>
+
+    <ion-item class="arredondar">
+      <ion-label style="white-space: normal">Consome álcool até 2 vezes por semana?</ion-label>
+      <ion-checkbox color="primary" checked="false" name="sn_alcool" [(ngModel)]="currentUser.sn_alcool" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+    </ion-item>
+
+    <br>
+    <button ion-button full type="submit" [disabled]="historicoClinicoForm.invalid" class="arredondar1">Salvar Histórico</button>
+
+  </form>
+
+</ion-content>

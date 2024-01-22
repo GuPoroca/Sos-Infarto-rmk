@@ -1,0 +1,50 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <img [src]="'assets/images/logo_app_horizontal.png'" style="
+    width: 190px;
+    height: 40px;" />
+    <custom-logged-header class="ion-title"></custom-logged-header>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+
+
+    <user-info [user]="currentUser" ></user-info>
+
+    <button ion-button block (click)="canEdit = !canEdit" class="boxbotao">Editar</button>
+
+    <form (ngSubmit)="onSubmit($event)" *ngIf="canEdit" #profileForm="ngForm">
+<br>
+      <ion-item class="boxbotao">
+        <img [src]="'assets/icon/icone_apelido.png'" item-start style=" border-radius: 30px;
+        width: 36px;
+        height: 36px;" />
+        <ion-input type="text" placeholder="Username" name="username" [(ngModel)]="currentUser.username" required
+          minlenght="3">
+        </ion-input>
+      </ion-item>
+<br>
+      <ion-item class="boxbotao">
+        <img [src]="'assets/icon/icone_img.png'" item-start style=" border-radius: 30px;
+      width: 36px;
+      height: 36px;" />
+        <input type="file" accept="image/*" (change)="onPhoto($event)">
+      </ion-item>
+
+      <progress-bar *ngIf="uploadProgress" [progress]="uploadProgress"></progress-bar>
+
+      <br>
+      <button ion-button block type="submit" [disabled]="profileForm.form.invalid" class="boxbotao">Salvar</button>
+
+    </form>
+
+
+
+</ion-content>

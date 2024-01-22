@@ -1,0 +1,60 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div style=" border-radius: 20px;
+  background-color: rgba(145, 175, 231, 0.74);
+  padding: 10px;
+  margin: 1px;
+  opacity: 0.8;">
+
+    <h1 text-center>
+      <img [src]="'assets/icon/foto.png'" style="width:90px; height:90px;  border-radius: 90px; margin: 10px;" />
+    </h1>
+
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit(); $event.preventDefault()">
+
+      <ion-item class="inputusername">
+        <img [src]="'assets/icon/icone_apelido.png'" style=" border-radius: 30px;
+        width: 20px;
+        height: 20px;"
+          item-start />
+        <ion-input type="text" placeholder="Nome" formControlName="username"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item class="inputemail">
+        <img [src]="'assets/icon/icone_email.png'" style=" border-radius: 30px;
+        width: 20px;
+        height: 20px;"
+          item-start />
+        <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item class="inputsenha">
+        <img [src]="'assets/icon/icone_senha.png'" style=" border-radius: 30px;
+        width: 20px;
+        height: 20px;"
+          item-start />
+        <ion-input type="password" placeholder="Senha" formControlName="password"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item class="inputsenha">
+        <img [src]="'assets/icon/icone_senha.png'" style=" border-radius: 30px;
+          width: 20px;
+          height: 20px;"
+          item-start />
+        <ion-input type="password" placeholder="Confirmar Senha" formControlName="confirmPassword"></ion-input>
+      </ion-item>
+      <br>
+      <button ion-button full type="submit" [disabled]="signupForm.invalid || signupForm.hasError('passwordsDoNotMatch')" class="boxbuton">Criar Conta</button>
+
+    </form>
+  </div>
+
+</ion-content>

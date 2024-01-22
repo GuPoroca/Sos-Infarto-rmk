@@ -1,0 +1,20 @@
+page-recuperar-senha {
+  .email {
+    border-radius: 40px;
+    width: 20px;
+    height: 20px;
+  }
+  .boxbuton{
+    border-radius: 40px;
+  }
+  .inputemail{
+    border-radius: 10px;
+    background-color: #5ea6e3;
+  }
+  .nada{
+    border-radius: 50px;
+  }
+  .text-input::-webkit-input-placeholder {
+    color: white;
+  }
+}

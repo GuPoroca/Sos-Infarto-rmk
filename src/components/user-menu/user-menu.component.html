@@ -1,0 +1,54 @@
+<ion-content>
+
+  <user-info [user]="currentUser" [isMenu]="true"></user-info>
+
+  <ion-list no-lines>
+    <button ion-item  detail-none menuClose="user-menu" (click)="onProfile()">
+      Perfil
+      <img [src]="'assets/icon/icone_perfil.png'" item-start style=" border-radius: 30px;
+      width: 36px;
+      height: 36px;" />
+    </button>
+    <button ion-item icon-right detail-none menuClose="user-menu" (click)="onSinaisInfarto()">
+      Identificar Sinais de Infarto
+      <img [src]="'assets/icon/icone_identificarsinais.png'" item-start style=" border-radius: 100px;
+      width: 36px;
+      height: 36px;" />
+    </button>
+    <button ion-item icon-right detail-none menuClose="user-menu" (click)="onHistoricoClinico()">
+      Histórico Clínico
+      <img [src]="'assets/icon/icone_historico.png'" item-start style=" border-radius: 100px;
+      width: 36px;
+      height: 36px;" />
+    </button>
+    <!-- <button ion-item icon-right detail-none menuClose="user-menu" (click)="onChat()">
+      Chat
+      <ion-icon name="chatboxes" color="primary" item-end></ion-icon>
+    </button> -->
+    <button ion-item icon-right detail-none menuClose="user-menu" (click)="onContatos()">
+      Contatos
+      <img [src]="'assets/icon/icone_fone.png'" item-start style=" border-radius: 30px;
+      width: 36px;
+      height: 36px;" />
+    </button>
+    <button ion-item icon-right detail-none menuClose="user-menu" (click)="onSaibaMais()">
+      Saiba mais
+      <img [src]="'assets/icon/icone_saiba+.png'" item-start style=" border-radius: 30px;
+      width: 36px;
+      height: 36px;" />
+    </button>
+    <button ion-item icon-right detail-none menuClose="user-menu" (click)="onSobre()">
+      Sobre o app
+      <img [src]="'assets/icon/icone_sobre.png'" item-start style=" border-radius: 30px;
+      width: 36px;
+      height: 36px;" />
+    </button>
+    <button ion-item icon-right detail-none menuClose="user-menu" (click)="onLogout()">
+      Sair
+      <img [src]="'assets/icon/icone_sair1.png'" item-start style=" border-radius: 30px;
+      width: 36px;
+      height: 36px;" />
+    </button>
+  </ion-list>
+
+</ion-content>

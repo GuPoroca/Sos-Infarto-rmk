@@ -1,0 +1,44 @@
+<ion-content padding>
+
+    <h1 text-center>
+      <img class="round" [src]="'assets/images/logo_app.png'">
+    </h1>
+    <h1 text-left>
+      <a (click)="onAcionarEmergencia()">
+        <img [src]="'assets/icon/bot_fone.png'" item-start style=" border-radius: 10px;
+        width: 50px;
+        height: 50px;" />
+      </a>
+    </h1>
+    <form [formGroup]="signinForm" (ngSubmit)="onSubmit(); $event.preventDefault()">
+
+      <ion-item class="inputemail">
+        <img [src]="'assets/icon/icone_email.png'" style="border-radius: 40px;
+          width: 20px;
+          height: 20px;"
+          item-start />
+        <ion-input #focusInput type="email" placeholder="Email" formControlName="email"></ion-input>
+      </ion-item>
+
+      <br>
+      <ion-item class="inputsenha">
+        <img [src]="'assets/icon/icone_senha.png'" style="border-radius: 40px;
+          width: 20px;
+          height: 20px;"
+          item-start />
+        <ion-input type="password" placeholder="Senha" formControlName="password"></ion-input>
+      </ion-item>
+      <br>
+      <button ion-button full type="submit" [disabled]="signinForm.invalid"  class="boxbuton">Entrar</button>
+
+    </form>
+    <br>
+    <button ion-button round style="width:150px; background-color: Transparent;  box-shadow: 0 0 0 0 rgba(0,0,0,0),0 0 0 0 rgba(0,0,0,0) !important;
+    border-bottom: 0px;
+     border:none!important;" (click)="onSignup()">Inscreva-se</button>
+    <button ion-button round style="width:150px; background-color: Transparent;  box-shadow: 0 0 0 0 rgba(0,0,0,0),0 0 0 0 rgba(0,0,0,0) !important;
+    border-bottom: 0px;
+     border:none!important;" (click)="onRecuperarSenha()">Alterar Senha ?</button>
+
+
+  </ion-content>

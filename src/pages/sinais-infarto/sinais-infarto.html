@@ -1,0 +1,90 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+      <img [src]="'assets/icon/icone_logo.png'" />
+      <ion-title class="ion-title" >Identificar Sinais de Infarto</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding style="white-space: normal">
+
+
+  <form (ngSubmit)="onSubmit($event)">
+    <h3 text-center ion-text >O que você está sentindo?</h3>
+
+
+    <ion-item class="arredondar">
+      <ion-label style="white-space: normal">Dor retroesternal ou precordial (Dor no peito)</ion-label>
+      <ion-checkbox color="primary" checked="false" name="sn_dor_peito" [(ngModel)]="sn_dor_peito" (click)="unchecked()"></ion-checkbox>
+    </ion-item>
+    <ion-item style="padding-left: 50px" *ngIf="sn_dor_peito" class="arredondar">
+      <ion-label style="white-space: normal">Dor do tipo queimação</ion-label>
+      <ion-checkbox color="primary" checked="false" name="sn_queima" [(ngModel)]="sn_queima"></ion-checkbox>
+    </ion-item>
+    <ion-item style="padding-left: 50px" *ngIf="sn_dor_peito" class="arredondar">
+      <ion-label style="white-space: normal">Dor do tipo aperto</ion-label>
+      <ion-checkbox color="primary" checked="false" name="sn_aperto" [(ngModel)]="sn_aperto"></ion-checkbox>
+    </ion-item>
+    <ion-item style="padding-left: 50px" *ngIf="sn_dor_peito" class="arredondar">
+      <ion-label style="white-space: normal">Dor que se espalha (irradia)</ion-label>
+      <ion-checkbox color="primary" checked="false" name="sn_irradia" [(ngModel)]="sn_irradia" (click)="uncheckedIrradia()"></ion-checkbox>
+    </ion-item>
+    <ion-item style="padding-left: 50px" *ngIf="sn_dor_peito" class="arredondar">
+      <ion-label style="white-space: normal">Dor do tipo facada ou pontada</ion-label>
+      <ion-checkbox color="primary" checked="false" name="sn_irradia" [(ngModel)]="sn_pontada" (click)="uncheckedIrradia()"></ion-checkbox>
+    </ion-item>
+    <ion-item style="padding-left: 100px" *ngIf="sn_irradia && sn_dor_peito" class="arredondar">
+      <ion-label style="white-space: normal">Para membros superiores</ion-label>
+      <ion-checkbox color="primary" checked="false" name="sn_superiores" [(ngModel)]="sn_superiores"></ion-checkbox>
+    </ion-item>
+    <ion-item style="padding-left: 100px" *ngIf="sn_irradia && sn_dor_peito" class="arredondar">
+      <ion-label style="white-space: normal">Para pescoço</ion-label>
+      <ion-checkbox color="primary" checked="false" name="sn_pescoco" [(ngModel)]="sn_pescoco"></ion-checkbox>
+    </ion-item>
+
+    <ion-list radio-group name="qtdTempo" [(ngModel)]="qtdTempo" *ngIf="sn_dor_peito">
+      <h6 text-center ion-text color="black">Há quanto tempo?</h6>
+      <ion-item class="arredondar">
+        <ion-label>Mais de 20 minutos</ion-label>
+        <ion-radio value="mais" unchecked></ion-radio>
+      </ion-item>
+      <ion-item class="arredondar">
+        <ion-label>Menos de 20 minutos</ion-label>
+        <ion-radio value="menos"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-item class="arredondar">
+      <ion-label style="white-space: normal">Sudorese (suor aumentado)</ion-label>
+      <ion-checkbox color="primary" checked="false" name="sn_sudorese" [(ngModel)]="sn_sudorese"></ion-checkbox>
+    </ion-item>
+
+    <ion-item class="arredondar">
+      <ion-label style="white-space: normal">Náusea (enjôo)</ion-label>
+      <ion-checkbox color="primary" checked="false" name="sn_nausea" [(ngModel)]="sn_nausea"></ion-checkbox>
+    </ion-item>
+
+    <ion-item class="arredondar">
+      <ion-label style="white-space: normal">Tontura</ion-label>
+      <ion-checkbox color="primary" checked="false" name="sn_nausea" [(ngModel)]="sn_tontura"></ion-checkbox>
+    </ion-item>
+
+    <ion-item class="arredondar">
+      <ion-label style="white-space: normal">Vômito</ion-label>
+      <ion-checkbox color="primary" checked="false" name="sn_vomito" [(ngModel)]="sn_vomito"></ion-checkbox>
+    </ion-item>
+
+    <ion-item class="arredondar">
+      <ion-label style="white-space: normal">Dispneia (dificuldade de respirar)</ion-label>
+      <ion-checkbox color="primary" checked="false" name="sn_dispneia" [(ngModel)]="sn_dispneia"></ion-checkbox>
+    </ion-item>
+
+    <br>
+    <button ion-button full type="submit" color="secondary" class="arredondar">Resultado</button>
+
+  </form>
+
+
+</ion-content>

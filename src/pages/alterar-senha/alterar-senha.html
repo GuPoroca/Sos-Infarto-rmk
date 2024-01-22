@@ -1,0 +1,35 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title color="white" >Alterar Senha</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <form [formGroup]="signinForm" (ngSubmit)="onSubmit();">
+
+        <ion-item>
+          <ion-icon name="mail" item-start color="primary"></ion-icon>
+          <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="lock" item-start color="primary"></ion-icon>
+          <ion-input type="password" placeholder="Senha" formControlName="password"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-icon name="lock" item-start color="primary"></ion-icon>
+            <ion-input type="password" placeholder="Confirmar Senha" formControlName="passwordConfirm"></ion-input>
+        </ion-item>
+
+        <br>
+        <button ion-button fulltype="submit" [disabled]="signinForm.invalid" >Alterar Senha</button>
+
+      </form>
+
+
+</ion-content>

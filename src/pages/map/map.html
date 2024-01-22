@@ -1,0 +1,54 @@
+<ion-header>
+    <ion-navbar color="primary" >
+      <img [src]="'assets/icon/icone_logo.png'" />
+      <ion-title class="ion-title" color="white" >Unidade de Saúde </ion-title>
+    </ion-navbar>
+  </ion-header>
+
+  <ion-content padding>
+  <div class="body">
+    <div #map id="map"></div>
+
+    <ion-scroll scrollX="false" scrollY="true" style="width :110%;height:66%; top: -14px;right: 16px; opacity: 0.8;">
+
+      <ion-list>
+        <div *ngFor="let hospital1 of hospitais">
+          <ion-item *ngFor="let hospital of hospital1" (click)="calculateRoute(hospital.geometry.location)"
+                    style="font-size: 1.1rem">
+            {{hospital.name}} <br>
+            {{hospital.vicinity}}
+            <img [src]="'assets/icon/icone_localiza.png'" item-start style=" border-radius: 36px;
+            width: 36px;
+            height: 36px;" />
+            <div class="button-container">
+              <button ion-button (click)="openNavigationApp('uber', hospital.geometry.location.lat(), hospital.geometry.location.lng() )">
+                <p class = "uber"> u </p>
+              </button>
+              <button ion-button (click)="openNavigationApp('maps', hospital.geometry.location.lat(), hospital.geometry.location.lng() )">
+                <ion-icon name="map"></ion-icon>
+              </button>
+            </div>
+          </ion-item>
+        </div>
+      </ion-list>
+
+    </ion-scroll>
+
+  </div>
+
+
+
+    <!-- <ion-list>
+        <ion-item>
+          <ion-label>De onde?</ion-label>
+          <ion-input type="text" [(ngModel)]="originPosition"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Para onde?</ion-label>
+          <ion-input type="text" [(ngModel)]="destinationPosition"></ion-input>
+        </ion-item>
+        <div padding>
+          <button ion-button (click)="calculateRoute()">Traçar rota</button>
+        </div>
+      </ion-list> -->
+  </ion-content>

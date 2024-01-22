@@ -1,0 +1,36 @@
+<ion-header>
+
+    <ion-navbar color="primary">
+      <ion-title color="white">Recuperar Senha</ion-title>
+    </ion-navbar>
+
+  </ion-header>
+
+
+  <ion-content padding>
+    <div style=" border-radius: 20px;
+    background-color: rgba(145, 175, 231, 0.74);
+    padding: 10px;
+    margin: 1px;
+    opacity: 0.8;">
+
+      <h1 text-center>
+        <img [src]="'assets/icon/icone_nome.png'" style="width:80px; height:80px;  border-radius: 90px; margin: 10px;" />
+      </h1>
+
+      <form [formGroup]="recuperaForm" (ngSubmit)="onSubmit(); $event.preventDefault()">
+
+        <ion-item class="inputemail">
+          <img [src]="'assets/icon/icone_email.png'" style=" border-radius: 40px;
+          width: 20px;
+          height: 20px;"
+            item-start />
+          <ion-input #focusInput type="email" placeholder="Email" formControlName="email"></ion-input>
+        </ion-item>
+
+        <br>
+        <button ion-button full type="submit" class="boxbuton">Recuperar Senha</button>
+      </form>
+    </div>
+
+  </ion-content>
