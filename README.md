@@ -6,7 +6,7 @@
 
 ## Como rodar
 
-- Voce primeiramente precisa baixar o docker na sua máquina
+- Voce primeiramente precisa baixar o docker na sua máquina : https://www.docker.com/products/docker-desktop/
 
 - Após isso voce precisará utilizar o seguinte comando para buildar o ambiente da nossa aplicação:
 
@@ -20,7 +20,7 @@ docker build -t nossa-equipe/sos-infarto --load .
 The legacy builder is deprecated and will be removed in a future release. Install the buildx component to build images with BuildKit:
 ```
 
-- Você precisará baixar o buildx para o seu sistema operacional
+- Você precisará baixar o buildx para o seu sistema operacional (incluso no Docker para Windows e Mac)
 
 - Após buildar o ambiente voce precisará rodar esse ambiente, use o seguinte comando para isso
 
