@@ -25,7 +25,7 @@ The legacy builder is deprecated and will be removed in a future release. Instal
 - Após buildar o ambiente voce precisará rodar esse ambiente, use o seguinte comando para isso
 
 ```
-docker run -it nossa-equipe/sos-infarto:latest
+docker run -p 8100:8100 -it nossa-equipe/sos-infarto:latest
 ```
 
 - Com isso(se tudo deu certo) irá aparecer uma linha de comando com os arquivos do projeto e o ambiente certamente configurado no endereco /usr/src/app#, agora você irá precisar utilizar o seguinte comando para iniciar o projeto:
