@@ -35,3 +35,12 @@ ionic serve
 ```
 
 Após isso é só rodar o projeto externo(o embaixo do localhost) com a porta 8100
+
+
+Para aplicar mudanças feitas no app, utilize o comando
+
+```
+ionic build
+```
+
+Antes do ionic serve
