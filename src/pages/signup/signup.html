@@ -9,13 +9,13 @@
 <ion-content padding>
 
   <div style=" border-radius: 20px;
-  background-color: rgba(145, 175, 231, 0.74);
+  background-color: white;
   padding: 10px;
   margin: 1px;
-  opacity: 0.8;">
+  opacity: 0.7;">
 
     <h1 text-center>
-      <img [src]="'assets/icon/foto.png'" style="width:90px; height:90px;  border-radius: 90px; margin: 10px;" />
+      <img [src]="'assets/icon/icone_logo.png'" style="width:90px; height:90px;  border-radius: 90px; margin: 10px;" />
     </h1>
 
     <form [formGroup]="signupForm" (ngSubmit)="onSubmit(); $event.preventDefault()">
@@ -27,7 +27,11 @@
           item-start />
         <ion-input type="text" placeholder="Nome" formControlName="username"></ion-input>
       </ion-item>
+      <ion-item *ngIf="signupForm.get('username').touched && signupForm.get('username').errors?.invalidUsername" class="invalid-feedback">
+        Nome precisa ter mais de 3 letras
+      </ion-item>
       <br>
+
       <ion-item class="inputemail">
         <img [src]="'assets/icon/icone_email.png'" style=" border-radius: 30px;
         width: 20px;
@@ -35,7 +39,11 @@
           item-start />
         <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
       </ion-item>
+      <ion-item *ngIf="signupForm.get('email').touched && signupForm.get('email').errors?.invalidEmailFormat" class="invalid-feedback">
+        Este não é um formato de email válido
+      </ion-item>
       <br>
+      
       <ion-item class="inputsenha">
         <img [src]="'assets/icon/icone_senha.png'" style=" border-radius: 30px;
         width: 20px;
@@ -43,7 +51,11 @@
           item-start />
         <ion-input type="password" placeholder="Senha" formControlName="password"></ion-input>
       </ion-item>
+      <ion-item *ngIf="signupForm.get('password').touched && signupForm.get('password').errors?.weakPassword" class="invalid-feedback">
+        Senha fraca. A senha deve conter pelo menos 6 caracteres.
+      </ion-item>
       <br>
+
       <ion-item class="inputsenha">
         <img [src]="'assets/icon/icone_senha.png'" style=" border-radius: 30px;
           width: 20px;
@@ -51,7 +63,11 @@
           item-start />
         <ion-input type="password" placeholder="Confirmar Senha" formControlName="confirmPassword"></ion-input>
       </ion-item>
+      <ion-item *ngIf="signupForm.get('password').touched && signupForm.get('confirmPassword').touched && signupForm.hasError('passwordsDoNotMatch')" class="invalid-feedback">
+        As senhas não coincidem.
+      </ion-item>
       <br>
+
       <button ion-button full type="submit" [disabled]="signupForm.invalid || signupForm.hasError('passwordsDoNotMatch')" class="boxbuton">Criar Conta</button>
 
     </form>

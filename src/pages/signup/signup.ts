@@ -27,6 +27,9 @@ export class SignupPage {
   USER_NOME: string = "";
   USER_EMAIL: string = "";
   USER_SENHA: string = "";
+  // PWD_MIN_LENGTH: number = 6;
+  // USERNAME_MIN_LENGTH: number = 3
+
   constructor(
     //private cliente: ClienteProvider,
     public alertCtrl: AlertController,
@@ -38,22 +41,47 @@ export class SignupPage {
     public navParams: NavParams,
     public userService: UserService
   ) {
-    let emailRegex = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
 
     this.signupForm = this.formBuilder.group({
-      username: ["", [Validators.required, Validators.minLength(3)]],
+      username: ["", [Validators.required, this.usernameLengthValidator]],
       email: [
         "",
         Validators.compose([
           Validators.required,
-          Validators.pattern(emailRegex)
+          this.emailFormatValidator
         ])
       ],
-      password: ["", [Validators.required, Validators.minLength(6)]],
+      password: ["", [Validators.required, this.passwordLengthValidator]],
       confirmPassword: ["", [Validators.required, Validators.minLength(6)]],
     }, {
       validator: this.passwordsMatch.bind(this)
     });
+  }
+
+  usernameLengthValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const username = control.value;
+    if (username && username.length >= 3) {
+      return null;
+    }
+    return { 'invalidUsername': true };
+  }
+
+  emailFormatValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const email = control.value;
+    const emailRegex = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
+
+    if (email && !emailRegex.test(email)) {
+      return { 'invalidEmailFormat': true };
+    }
+    return null;
+  }
+
+  passwordLengthValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const password = control.value;
+    if (password && password.length >= 6) {
+      return null;
+    }
+    return { 'weakPassword': true };
   }
 
   passwordsMatch(control: AbstractControl): { [key: string]: boolean } | null {
