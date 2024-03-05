@@ -22,10 +22,10 @@ export abstract class BaseComponent implements OnInit {
 
     onLogout(): void {
         this.alertCtrl.create({
-            message: 'Do you want to quit?',
+            message: 'Você quer sair da sua conta?',
             buttons: [
                 {
-                    text: 'Yes',
+                    text: 'Sim',
                     handler: () => {
                         this.authService.logout()
                             .then(() => {
@@ -35,7 +35,7 @@ export abstract class BaseComponent implements OnInit {
                     }
                 },
                 {
-                    text: 'No'
+                    text: 'Não'
                 }
             ]
         }).present();
